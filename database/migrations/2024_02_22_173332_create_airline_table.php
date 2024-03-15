@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('airline', function (Blueprint $table) {
+        Schema::create('airlines', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name');
             $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('airline');
+        Schema::dropIfExists('airlines');
     }
 };

@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CreateAirlineController;
+use App\Http\Controllers\DeleteAirlineController;
+use App\Http\Controllers\UpdateAirlineController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::prefix('airline')->group(function () {
+    Route::post('/', CreateAirlineController::class);
+    Route::delete('/{airlineId}', DeleteAirlineController::class);
+    Route::put('/{airline}', UpdateAirlineController::class);
 });
