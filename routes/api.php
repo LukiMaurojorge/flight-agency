@@ -22,6 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('airline')->group(function () {
     Route::post('/', CreateAirlineController::class);
-    Route::delete('/{airlineId}', DeleteAirlineController::class);
+    Route::delete('/{airline}', DeleteAirlineController::class);
     Route::put('/{airline}', UpdateAirlineController::class);
 });

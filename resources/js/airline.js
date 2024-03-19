@@ -1,6 +1,4 @@
 let submitButton = document.getElementById("submitButton");
-const updateButton = document.getElementById("updateButton");
-const hiddenInput = document.getElementById("hidden");
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -52,27 +50,6 @@ closeModalButton.addEventListener(
     () => (modal.style.display = "none")
 );
 
-openModalButton.addEventListener(
-    "click",
-    () => (modal.style.display = "block")
-);
-
-const updateAirline = async (airlineId) => {
-    const name = document.getElementById("updateName");
-    const description = document.getElementById("updateDescription");
-
-    return await fetch(`${base_url}/api/airline?airline=${airlineId}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name,
-            description,
-        }),
-    });
-};
-
 document.addEventListener("DOMContentLoaded", function () {
     const openModalButtons = document.querySelectorAll("#openModalButton");
 
@@ -80,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         button.addEventListener("click", function () {
             const airlineId = button.getAttribute("data-id");
 
+            modal.style.display = "block";
             document.getElementById("hidden").value = airlineId;
         });
     });

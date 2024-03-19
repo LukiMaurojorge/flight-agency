@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AirlineDataRequest;
 use App\Http\Requests\CreateAirlineRequest;
-use Domain\Airline\Actions\CreateAirlineAction;
+use App\Models\Airline;
+use Illuminate\Http\JsonResponse;
 
 class CreateAirlineController extends Controller
 {
-    public function __invoke(CreateAirlineRequest $request, CreateAirlineAction $createAirlineAction)
+    public function __invoke(CreateAirlineRequest $request): JsonResponse
     {
-        $createAirlineAction->execute($request->validated());
+        $airline = Airline::create($request->validated());
+
+        return response()->json($airline, JsonResponse::HTTP_CREATED);
     }
 }

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Domain\Airline\Actions\DeleteAirlineAction;
+use App\Models\Airline;
+use Illuminate\Http\JsonResponse;
 
 class DeleteAirlineController extends Controller
 {
-    public function __invoke(DeleteAirlineAction $deleteAirlineAction, $airlineId)
+    public function __invoke(Airline $airline): JsonResponse
     {
-        $deleteAirlineAction->execute($airlineId);
+        $airline->delete();
+
+        return response()->json()->noContent();
     }
 }

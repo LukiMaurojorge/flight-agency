@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Domain\Airline\Actions\GetAirlineAction;
+use App\Models\Airline;
+use Illuminate\Contracts\View\View;
 
 class GetAirlineController extends Controller
 {
-    public function __invoke(GetAirlineAction $getAirlineAction)
+    public function __invoke(): View
     {
-        return $getAirlineAction->execute();
+        $airlines = Airline::paginate(10);
+
+        return view('airline', [
+            'airlines' => $airlines
+        ]);
     }
 }
