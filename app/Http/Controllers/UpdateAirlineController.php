@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAirlineRequest;
 use App\Models\Airline;
+use Illuminate\Http\JsonResponse;
 
 class UpdateAirlineController extends Controller
 {
-    public function __invoke(CreateAirlineRequest $request, Airline $airline)
+    public function __invoke(CreateAirlineRequest $request, Airline $airline): JsonResponse
     {
-        return $airline->update($request->validated());
+        $airline->update($request->validated());
+
+        return response()->json($airline);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GetAirlineController;
+use App\Http\Controllers\GetAirlinesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/airline', GetAirlineController::class);
+Route::get('/airlines', GetAirlinesController::class);

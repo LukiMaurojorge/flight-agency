@@ -1,12 +1,12 @@
-let submitButton = document.getElementById("submitButton");
+const submitButton = document.getElementById("submitButton");
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
 const createAirline = async () => {
-    let name = document.getElementById("name").value;
-    let description = document.getElementById("description").value;
+    const name = document.getElementById("name").value;
+    const description = document.getElementById("description").value;
 
-    return await fetch(`${base_url}/api/airline`, {
+    return await fetch(`${base_url}/api/airlines`, {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -27,7 +27,7 @@ const createAirline = async () => {
 };
 
 const deleteAirline = async (airlineId) => {
-    return await fetch(`${base_url}/api/airline/${airlineId}`, {
+    return await fetch(`${base_url}/api/airlines/${airlineId}`, {
         method: "DELETE",
     }).then(() => window.location.reload());
 };
@@ -43,7 +43,6 @@ document.querySelectorAll(".deleteButton").forEach((button) => {
 
 const modal = document.getElementById("modal");
 const closeModalButton = document.getElementById("closeModalButton");
-const openModalButton = document.getElementById("openModalButton");
 
 closeModalButton.addEventListener(
     "click",
@@ -77,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 description: description,
             };
 
-            fetch(`${base_url}/api/airline/${airlineId}`, {
+            fetch(`${base_url}/api/airlines/${airlineId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

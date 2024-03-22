@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Airline;
+use Database\Factories\AirlineFactory;
 use Illuminate\Database\Seeder;
 
 class AirlineSeeder extends Seeder
@@ -12,6 +12,6 @@ class AirlineSeeder extends Seeder
      */
     public function run(): void
     {
-        Airline::factory()->count(15)->create();
+        AirlineFactory::new()->count(15)->create();
     }
 }

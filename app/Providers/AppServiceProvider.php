@@ -14,9 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(CreateAirlineAction::class, function () {
-            return new CreateAirlineAction();
-        });
     }
 
     /**

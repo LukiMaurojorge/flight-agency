@@ -20,7 +20,7 @@ class AirlineFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'description' => Str::random(10)
+            'description' => fake()->text()
         ];
     }
 }
